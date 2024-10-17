@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://cn1h5klscgma7"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_qas04"]
+[ext_resource type="PackedScene" uid="uid://dupeno4bujiib" path="res://Scenes/elements.tscn" id="2_i06fg"]
+[ext_resource type="Script" path="res://Scripts/selection.gd" id="3_o1ppm"]
+[ext_resource type="Script" path="res://Scripts/shake.gd" id="4_rojb2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rik6x"]
+size = Vector2(740, 52)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_3fure"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jv3ij"]
+size = Vector2(4000, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sp5yk"]
+size = Vector2(700, 40)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_y84ap"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_qas04")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(755, 494)
+rotation = -0.457672
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_rik6x")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(700, 50)
+texture = SubResource("CanvasTexture_3fure")
+
+[node name="PotCollider" type="Area2D" parent="."]
+position = Vector2(209, 642)
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PotCollider"]
+shape = SubResource("RectangleShape2D_jv3ij")
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
+position = Vector2(-20, 304)
+rotation = -1.57075
+shape = SubResource("RectangleShape2D_sp5yk")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="Elements" parent="." instance=ExtResource("2_i06fg")]
+
+[node name="Selection" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = SubResource("CanvasTexture_y84ap")
+script = ExtResource("3_o1ppm")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+script = ExtResource("4_rojb2")
+
+[node name="GoalElements" parent="." instance=ExtResource("2_i06fg")]
+position = Vector2(0, 55)
+
+[connection signal="body_entered" from="PotCollider" to="." method="_on_pot_collider_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

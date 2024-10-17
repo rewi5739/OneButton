@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://cbs0q27obvlcu"]
+
+[ext_resource type="Script" path="res://Scripts/element.gd" id="1_3sx8e"]
+[ext_resource type="Script" path="res://Scripts/trail_ex.gd" id="2_wy010"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_gmqi2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j741h"]
+
+[sub_resource type="Curve" id="Curve_83aj2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_4cyjr"]
+colors = PackedColorArray(0.231373, 1, 1, 1, 0.659345, 0.00292288, 0.919669, 1)
+
+[node name="Element" type="CharacterBody2D"]
+collision_mask = 6
+script = ExtResource("1_3sx8e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(20, 20)
+texture = SubResource("CanvasTexture_gmqi2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_j741h")
+
+[node name="TrailEX" type="Line2D" parent="."]
+width_curve = SubResource("Curve_83aj2")
+gradient = SubResource("Gradient_4cyjr")
+script = ExtResource("2_wy010")

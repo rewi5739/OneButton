@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dupeno4bujiib"]
+
+[ext_resource type="Script" path="res://Scripts/elements.gd" id="1_akuwf"]
+
+[node name="Elements" type="Node2D"]
+script = ExtResource("1_akuwf")
+
+[node name="Start" type="Node2D" parent="."]
+position = Vector2(135, 121)
+
+[node name="End" type="Node2D" parent="."]
+position = Vector2(954, 120)
+
+[node name="Collection" type="Node2D" parent="."]

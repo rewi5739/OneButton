@@ -14,8 +14,8 @@ func _physics_process(delta: float) -> void:
 		
 		var collision: KinematicCollision2D = move_and_collide(velocity)
 		if (collision):
-			print(collision.get_normal())
-			velocity += collision.get_normal() * 50
+			#print(collision.get_normal())
+			velocity += collision.get_normal() * 42
 	
 
 func choose():

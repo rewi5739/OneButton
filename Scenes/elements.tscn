@@ -6,7 +6,7 @@
 script = ExtResource("1_akuwf")
 
 [node name="Start" type="Node2D" parent="."]
-position = Vector2(135, 121)
+position = Vector2(300, 126)
 
 [node name="End" type="Node2D" parent="."]
 position = Vector2(954, 120)

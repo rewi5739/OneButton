@@ -1,4 +1,4 @@
 extends Sprite2D
 
 func select(element : CharacterBody2D):
-	position = element.position + Vector2(0, -30)
+	position = element.global_position + Vector2(0, -30)

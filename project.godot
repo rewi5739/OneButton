@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 ShakeBus="*res://Scripts/shake_bus.gd"
+AudioManager="*res://Scripts/audio_manager.gd"
 
 [input]
 
@@ -41,4 +42,4 @@ main={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.981053, 5.19812e-05, 0.71753, 1)
+environment/defaults/default_clear_color=Color(0.697888, 0.507728, 0.567096, 1)

@@ -5,7 +5,7 @@ var point_queue : Array
 @export var max_length: int = 10
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var pos = global_position
 	
 	point_queue.push_front(pos)

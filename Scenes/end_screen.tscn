@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgmsyl6jvecs3"]
+
+[ext_resource type="Script" path="res://Scenes/end_screen.gd" id="1_j5xaf"]
+[ext_resource type="Texture2D" uid="uid://dpm2o5q844wsu" path="res://Assets/411874-waneella-pixel-art-digital-art-pixels-shop.jpg" id="2_fetd1"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_558c4"]
+
+[node name="StartScreen" type="CanvasLayer"]
+script = ExtResource("1_j5xaf")
+
+[node name="411874-waneella-pixel-art-digital-art-pixels-shop" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(375, 376)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_fetd1")
+
+[node name="Background2" type="Sprite2D" parent="."]
+modulate = Color(0, 0.623529, 0.623529, 0.870588)
+position = Vector2(576, 280)
+scale = Vector2(700, 200)
+texture = SubResource("CanvasTexture_558c4")
+
+[node name="MainText" type="Label" parent="."]
+offset_left = 259.0
+offset_top = 231.0
+offset_right = 873.0
+offset_bottom = 358.0
+text = "Congratulations!
+You have completed the game!
+Press space to restart"
+horizontal_alignment = 1

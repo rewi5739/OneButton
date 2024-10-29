@@ -5,27 +5,31 @@ extends Node2D
 @onready var goal_elements = $GoalElements
 @onready var timer = $Timer
 @onready var result_label = $ResultLabel
-@export var BASE_TIME = 4
-@export var difficulty = 4
-@export var test_sound: Resource
-var default_time:float = BASE_TIME
+@export  var BASE_TIME = 4
+@export  var BASE_DIFFICULTY = 4
+@export  var final_level = 10
+@export  var test_sound: Resource
+@onready var default_time: float = BASE_TIME
+@onready var curr_level = BASE_DIFFICULTY
 var particle_scene = preload("res://Scenes/cauldron_particles.tscn")
 var elements_arr:Array
 var AEIndex : int = 0
 var active_element : CharacterBody2D
 var chosen_elements:Array = []
 var goal : Array
-var resetting = false
+var resetting = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	generate_level(difficulty)
+	next_level()
 
 
 func next_level():
 	#print(chosen_elements)
 	timer.stop()
 	selection.visible = false
+	if curr_level > final_level:
+		get_tree().change_scene_to_file("res://Scenes/end_screen.tscn")
 	if not chosen_elements.is_empty() and elements_arr[chosen_elements[-1]].visible:
 		await elements_arr[chosen_elements[-1]].element_added
 	var success = check_potion_successful()
@@ -37,14 +41,14 @@ func next_level():
 	chosen_elements = []
 	if success:
 		play_success()
-		difficulty += 1
-		if difficulty%3 ==0:
+		curr_level += 1
+		if curr_level%3 ==0:
 			default_time += 1
 	else:
 		play_failure()
-		difficulty = 4
+		curr_level = BASE_DIFFICULTY
 		default_time = BASE_TIME
-	generate_level(difficulty)
+	generate_level(curr_level)
 	transition()
 	#resetting = false
 	#generate_level(difficulty)
@@ -116,12 +120,17 @@ func check_potion_successful():
 func transition():
 	var transition_timer = get_tree().create_timer(1.0)
 	#print(default_time)
-	timer.start(default_time/difficulty)
 	await transition_timer.timeout
+	timer.start(default_time/curr_level)
 	result_label.visible = false
 	await timer.timeout
+	print("1")
 	await timer.timeout
+	print("2")
 	await timer.timeout
+	print("3")
+	await timer.timeout
+	print("4")
 	await timer.timeout
 	selection.visible = true
 	resetting = false

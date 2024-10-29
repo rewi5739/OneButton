@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://qqwjosmc5boi"]
+
+[ext_resource type="Script" path="res://start_screen.gd" id="1_t8lco"]
+[ext_resource type="Texture2D" uid="uid://dpm2o5q844wsu" path="res://Assets/411874-waneella-pixel-art-digital-art-pixels-shop.jpg" id="2_euc52"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_n0dqn"]
+
+[node name="StartScreen" type="CanvasLayer"]
+script = ExtResource("1_t8lco")
+
+[node name="411874-waneella-pixel-art-digital-art-pixels-shop" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(375, 376)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_euc52")
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0, 0.623529, 0.623529, 0.870588)
+position = Vector2(576, 280)
+scale = Vector2(700, 200)
+texture = SubResource("CanvasTexture_n0dqn")
+
+[node name="MainText" type="Label" parent="."]
+offset_left = 266.0
+offset_top = 213.0
+offset_right = 880.0
+offset_bottom = 340.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Instructions:
+The top bar shows the ingredients that need to be added to the potion
+Use the space bar while the correct ingredient is selected to add it to the potion
+Game ends when you reach a high enough level
+Press space to start"
+horizontal_alignment = 1
